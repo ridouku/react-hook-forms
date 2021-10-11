@@ -19,14 +19,14 @@ export const Person = (props) => {
         <React.Fragment>
             <div className="App">
                 <header className="App-header">
-                    <h1>Ioet React Exercise</h1>
+                    <h1>React Hook Form Exercise</h1>
                     <Container fixed>
                         <FormProvider {...methods} >
                             <Grid container spacing={2}>
                                 <Grid item xs={12} lg={6}>
                                     <Card>
-                                        <PersonForm errors={errors}/>
-                                        <ActionButtons onSave={actions.handleSubmitForm(actions.handlePersonSubmit)}
+                                        <PersonForm errors={methods.formState.errors}/>
+                                        <ActionButtons onSave={methods.handleSubmit(actions.handlePersonSubmit)}
                                                        disabled={props.loading}/>
                                     </Card>
                                 </Grid>
@@ -48,7 +48,7 @@ export const mapStateToProps = (state) => (
         loading: state.loading,
         people: state.people,
         createPersonRequestStatus: state.createPersonRequestStatus
-}
+    }
 )
 
 export const mapDispatchToProps = (
@@ -56,7 +56,7 @@ export const mapDispatchToProps = (
 ) => (
     {
         getPeopleList: () => dispatch(getPeopleList()),
-        createPerson: (payload)=> dispatch(createPerson(payload))
+        createPerson: (payload) => dispatch(createPerson(payload))
     }
 );
 

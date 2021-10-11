@@ -6,7 +6,6 @@ export const PersonState = (props) => {
     const methods = useForm({
         mode: "all"
     })
-    const { handleSubmit, formState: { errors }} = methods;
     const handlePersonSubmit = (formData) => {
         props.createPerson(formData)
     }
@@ -31,10 +30,8 @@ export const PersonState = (props) => {
 
     return {
         methods,
-        errors,
         actions: {
-            handlePersonSubmit,
-            handleSubmitForm: handleSubmit
+            handlePersonSubmit
         },
     }
 }
